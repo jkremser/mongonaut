@@ -1,0 +1,9 @@
+FROM jkremser/mini-jre:8.1
+
+ENV JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+
+ADD target/mongonaut-*.jar /mongonaut.jar
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "/mongonaut.jar"]

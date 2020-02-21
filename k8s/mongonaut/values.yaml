@@ -5,8 +5,20 @@
 replicaCount: 2
 
 image:
-  repository: dekstroza/mongonaut
-  tag: 1.0.0-SNAPSHOT
+  # open-jdk
+  #repository: jkremser/mongonaut-jit
+  #tag: latest
+
+  # graal ce
+  #repository: jkremser/mongonaut-jit-graal
+  #tag: latest
+  
+  # graal ee
+  repository: jkremser/mongonaut-jit
+  tag: test
+
+  #repository: dekstroza/mongonaut
+  #tag: 1.0.0-SNAPSHOT-ee
   pullPolicy: IfNotPresent
 
 nameOverride: ""
@@ -36,10 +48,12 @@ resources:
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
   #  cpu: 100m
-    memory: 100Mi
+    #memory: 100Mi
+    memory: 600Mi
   requests:
   #  cpu: 100m
-    memory: 50Mi
+    #memory: 50Mi
+    memory: 500Mi
 
 nodeSelector: {}
 

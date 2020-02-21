@@ -1,0 +1,11 @@
+FROM jkremser/native_base:test
+
+ENV JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+
+ADD target/mongonaut-*.jar /mongonaut.jar
+#ADD mongonaut-1.0.0-SNAPSHOT-from-alex.jar /mongonaut.jar
+
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "/mongonaut.jar"]

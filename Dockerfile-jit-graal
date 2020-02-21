@@ -1,0 +1,12 @@
+FROM oracle/graalvm-ce:19.2.1
+
+ENV JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+
+# native image needs to be installed b/c of the tracing agent
+RUN gu install native-image
+
+ADD target/mongonaut-*.jar /mongonaut.jar
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "/mongonaut.jar"]
